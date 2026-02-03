@@ -1,0 +1,25 @@
+vi backup_manager.sh
+chmod +x backup_manager.sh
+mkdir source_files
+echo "hello" > source_files/a.txt
+echo "world" > source_files/b.txt
+echo "skip" > source_files/c.log
+./backup_manager.sh source_files backup_folder txt
+ls backup_folder
+cat backup_folder/backup_report.log
+
+
+o/p:
+Files to be backed up:
+a.txt - 6 bytes
+b.txt - 6 bytes
+Backup completed. Report saved to backup_folder/backup_report.log
+
+
+a.txt  b.txt  backup_report.log
+
+Backup Summary Report
+Total files backed up: 2
+Total size backed up: 0 bytes
+Backup directory: backup_folder
+Date: Tue Feb  3 13:06:58 UTC 2026
