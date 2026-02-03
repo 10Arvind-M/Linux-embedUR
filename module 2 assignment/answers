@@ -1,0 +1,68 @@
+Q1)
+find . -type f -size +1M > large_files.txt
+cat large_files.txt
+
+o/p:
+./.npm/_npx/69f9afb961c37556/node_modules/@ts-morph/common/dist/typescript.js
+./.npm/_npx/69f9afb961c37556/node_modules/esbuild-linux-64/bin/esbuild
+./.npm/_npx/69f9afb961c37556/node_modules/vercel/dist/index.js
+./.npm/_npx/69f9afb961c37556/node_modules/@vercel/build-utils/dist/index.js
+./.npm/_npx/69f9afb961c37556/node_modules/@vercel/node/dist/index.js
+./.npm/_npx/69f9afb961c37556/node_modules/@vercel/static-build/dist/index.js
+./.npm/_npx/69f9afb961c37556/node_modules/esbuild/bin/esbuild
+./.npm/_npx/69f9afb961c37556/node_modules/typescript/lib/typescriptServices.js
+./.npm/_npx/69f9afb961c37556/node_modules/typescript/lib/tsserverlibrary.js
+./.npm/_npx/69f9afb961c37556/node_modules/typescript/lib/tsserver.js
+./.npm/_npx/69f9afb961c37556/node_modules/typescript/lib/typingsInstaller.js
+./.npm/_npx/69f9afb961c37556/node_modules/typescript/lib/tsc.js
+./.npm/_npx/69f9afb961c37556/node_modules/typescript/lib/typescript.js
+
+
+Q2)
+touch config.txt
+vi config.txt
+sed 's/localhost/127.0.0.1/g' config.txt > updated_config.txt
+cat updated_config.txt
+
+o/p:
+server.host=127.0.0.1
+server.port=8080
+
+database.host=127.0.0.1
+database.port=5432
+database.user=admin
+database.password=secret
+
+cache.host=127.0.0.1
+cache.port=6379
+
+api.endpoint=http://127.0.0.1:5000/api
+logging.level=INFO
+
+
+Q3)
+vi logfile.txt
+grep "ERROR" logfile.txt | grep -v "DEBUG" > filtered_log.txt
+cat filtered_log.txt
+
+o/p:
+ERROR: Unable to connect to the database.
+ERROR: Failed to fetch data from API endpoint '/users'.
+ERROR: Missing required parameter in the request.
+
+
+
+Q4)
+ps aux --sort=-%mem | head -n 2
+kill -9 356
+
+o/p:
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         356  0.0  0.5 107028 22144 ?        Ssl  12:46   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+
+
+Q5)
+ip route | awk '/default/ {print $3}' | sort -u
+
+o/p:
+172.31.112.1
