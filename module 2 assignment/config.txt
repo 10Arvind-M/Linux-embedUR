@@ -1,0 +1,15 @@
+server.host=localhost
+server.port=8080
+
+database.host=localhost
+database.port=5432
+database.user=admin
+database.password=secret
+
+cache.host=localhost
+cache.port=6379
+
+api.endpoint=http://localhost:5000/api
+logging.level=INFO
+
+
