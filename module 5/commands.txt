@@ -1,0 +1,56 @@
+mkdir testdir
+cd testdir
+/testdir$ echo "This is an error message" > file1.txt
+/testdir$ echo "All good here" > file2.txt
+/testdir$ echo "TODO: fix this error soon" > file3.txt
+/testdir$ mkdir subdir
+/testdir$ echo "Another error occurred" > subdir/file4.txt
+/testdir$ ../file_analyzer.sh -d . -k error
+
+o/p:
+./file1.txt:This is an error message
+./file3.txt:TODO: fix this error soon
+./subdir/file4.txt:Another error occurred
+
+/testdir$ ../file_analyzer.sh -f file3.txt -k TODO
+
+o/p:
+file3.txt:TODO: fix this error soon
+
+
+/testdir$ ../file_analyzer.sh --help
+
+o/p:
+Usage: ../file_analyzer.sh [-d directory] [-k keyword] [-f file] [--help]
+
+Options:
+  -d directory   Directory to search recursively
+  -k keyword     Keyword to search
+  -f file        File to search directly
+  --help         Display this help menu
+
+
+/testdir$ ../file_analyzer.sh -d .
+
+o/p:
+Keyword is missing
+
+
+/testdir$ ../file_analyzer.sh -f nofile.txt -k test
+
+o/p:
+File does not exist: nofile.txt
+
+
+/testdir$ ../file_analyzer.sh -d . -k "@@@@"
+
+o/p:
+Invalid keyword format
+
+
+/testdir$ cat errors.log
+
+o/p:
+Keyword is missing
+File does not exist: nofile.txt
+Invalid keyword format
