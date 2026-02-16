@@ -49,7 +49,7 @@ for file in "${FILES[@]}"; do
         cp "$file" "$dest"
         ((BACKUP_COUNT++))
         size=$(stat -c%s "$file")
-        ((TOTAL+=size))
+        ((TOTAL_SIZE+=size))
     fi
 done
 
